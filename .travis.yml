@@ -25,7 +25,7 @@ script:
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt*.AppImage
   - unset LD_LIBRARY_PATH
-  - ./linuxdeployqt*.AppImage ./appdir/usr/bin/esptool-gui -appimage 
+  - ./linuxdeployqt*.AppImage ./appdir/usr/bin/esptool-gui -appimage -executable=./appdir/uusr/bin/tool-esptool/esptool
 
 after_success:
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
