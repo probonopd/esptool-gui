@@ -12,6 +12,7 @@ install:
     - source /opt/qt*/bin/qt*-env.sh
 
 script:
+  - git checkout f7fefcf # FIXME
   - qmake PREFIX=/usr
   - make -j4
   - mkdir -p appdir/usr/bin ; mkdir -p appdir/usr/share/{applications,icons} ; cd appdir
