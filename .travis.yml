@@ -20,7 +20,7 @@ script:
   - mkdir -p usr/bin/tool-esptool 
   - cp ../tools-linux/tool-esptool/esptool usr/bin/tool-esptool/
   - cp ../*.desktop .
-  - touch esptool-gui.png # FIXME
+  - touch esptool-gui.svg # FIXME
   - cd .. 
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt*.AppImage
