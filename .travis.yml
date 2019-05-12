@@ -21,9 +21,15 @@ script:
   - cp ../*.desktop .
   - touch esptool-gui.png # FIXME
   - cd .. 
-  - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/3/linuxdeployqt-3-x86_64.AppImage" 
+  - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt*.AppImage
-  - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  - ./linuxdeployqt*.AppImage ./appdir/usr/bin/esptool-gui -bundle-non-qt-libs
   - ./linuxdeployqt*.AppImage ./appdir/usr/bin/esptool-gui -appimage 
-  - curl --upload-file ./esptool-gui-*.AppImage https://transfer.sh/esptool-gui-git.$(git rev-parse --short HEAD)-x86_64.AppImage 
+
+after_success:
+  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+  - bash upload.sh APPNAME*.AppImage*
+  
+branches:
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+    - /^(?i:continuous)/
